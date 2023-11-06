@@ -3,10 +3,10 @@ CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -pedantic
 
 BUILD_DIR = build
 
-SRC_FILES = ex00.cpp
+SRC_FILES = ex01.cpp
 OBJ_FILES = $(SRC_FILES:%.cpp=$(BUILD_DIR)/%.o)
 
-TARGET = megaphone
+TARGET = phonebook
 
 all: $(TARGET)
 
