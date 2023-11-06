@@ -1,59 +1,115 @@
 #include <iostream>
-#include <cctype>
-#include <vector>
+#include <string>
+#include <iomanip>
 
-class Contact{
-    public:
-    std::string name;
+class Contact {
+public:
+    std::string first_name;
+    std::string last_name;
+    std::string nickname;
     std::string phone_number;
-    Contact(std::string name, std::string phone_number) {
-        this->name = name;
-        this->phone_number = phone_number;
+    std::string darkest_secret;
+
+    Contact() {}
+
+    void fillContact() {
+        std::cout << "First name: ";
+        std::getline(std::cin, first_name);
+        std::cout << "Last name: ";
+        std::getline(std::cin, last_name);
+        std::cout << "Nickname: ";
+        std::getline(std::cin, nickname);
+        std::cout << "Phone number: ";
+        std::getline(std::cin, phone_number);
+        std::cout << "Darkest secret: ";
+        std::getline(std::cin, darkest_secret);
+    }
+
+    void displayContact() const {
+        std::cout << "First name: " << first_name << std::endl
+                  << "Last name: " << last_name << std::endl
+                  << "Nickname: " << nickname << std::endl
+                  << "Phone number: " << phone_number << std::endl
+                  << "Darkest secret: " << darkest_secret << std::endl;
     }
 };
+
 class PhoneBook {
 private:
-    std::vector<Contact*> contacts;
+    Contact contacts[8];
+    int next_index;
 
 public:
-    PhoneBook() {
-        contacts.resize(8, nullptr);
-    }
+    PhoneBook() : next_index(0) {}
 
-    void add_contact(Contact* contact) {
-        int oldest_index = 0;
-        for (int i = 1; i < 8; i++) {
-            if (contacts[i] == nullptr || contacts[i]->name > contacts[oldest_index]->name) {
-                oldest_index = i;
-            }
+    void addContact() {
+        if (next_index >= 8) {
+            next_index = 0;
         }
-        delete contacts[oldest_index];
-        contacts[oldest_index] = contact;
+
+        contacts[next_index].fillContact();
+        next_index++;
     }
 
-    void remove_contact(std::string name) {
-        for (int i = 0; i < 8; i++) {
-            if (contacts[i] != nullptr && contacts[i]->name == name) {
-                delete contacts[i];
-                contacts[i] = nullptr;
-                return;
-            }
+    void searchContacts() const {
+        for (int i = 0; i < next_index; i++) {
+            std::cout << std::setw(10) << i << "|"
+                      << std::setw(10) << truncate(contacts[i].first_name) << "|"
+                      << std::setw(10) << truncate(contacts[i].last_name) << "|"
+                      << std::setw(10) << truncate(contacts[i].nickname) << std::endl;
         }
     }
 
-    Contact* find_contact(std::string name) {
-        for (int i = 0; i < 8; i++) {
-            if (contacts[i] != nullptr && contacts[i]->name == name) {
-                return contacts[i];
-            }
+    void displayContactDetails(int index) const {
+        if (index >= 0 && index < next_index) {
+            contacts[index].displayContact();
+        } else {
+            std::cout << "Invalid index." << std::endl;
         }
-        return nullptr;
+    }
+
+private:
+    static std::string truncate(const std::string& text) {
+        if (text.length() > 10) {
+            return text.substr(0, 9) + ".";
+        } else {
+            return text;
+        }
     }
 };
+
+char toLower(char c) {
+    return static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+}
 
 int main() {
     PhoneBook phoneBook;
-    phoneBook.add_contact(new Contact("John Doe", "1234567890"));
-    phoneBook.add_contact(new Contact("Jane Doe", "0987654321"));
-    
+    std::string command;
+
+    while (true) {
+        std::cout << "Enter command (ADD, SEARCH, EXIT): ";
+        std::getline(std::cin, command);
+        std::transform(command.begin(), command.end(), command.begin(), toLower);
+
+        if (command == "add") {
+            phoneBook.addContact();
+        } else if (command == "search") {
+            phoneBook.searchContacts();
+            std::cout << "Enter the index of the contact to display: ";
+            int index;
+            if (std::cin >> index) {
+                std::cin.ignore();
+                phoneBook.displayContactDetails(index);
+            } else {
+                std::cout << "Invalid input." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+            }
+        } else if (command == "exit") {
+            break;
+        } else {
+            std::cout << "Unknown command." << std::endl;
+        }
+    }
+    return 0;
 }
