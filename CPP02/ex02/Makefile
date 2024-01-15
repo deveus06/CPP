@@ -4,7 +4,7 @@ BUILD_DIR = build
 SRC_FILES = main.cpp Fixed.cpp
 OBJ_FILES = $(SRC_FILES:%.cpp=$(BUILD_DIR)/%.o)
 DEP_FILES = $(OBJ_FILES:.o=.d)
-TARGET = Fixed01
+TARGET = Fixed02
 
 all: $(TARGET)
 
