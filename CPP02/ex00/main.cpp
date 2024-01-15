@@ -6,36 +6,37 @@ private:
     static const int fractionalBits = 8;
 
 public:
-    // Default constructor
-    Fixed() : value(0) {}
+    Fixed() : value(0) {
+        std::cout<<"Default constructor called"<<std::endl;
+    }
 
-    // Copy constructor
-    Fixed(const Fixed &other) : value(other.value) {}
+    Fixed(const Fixed &other) : value(other.value) {
+        std::cout<<"Copy constructor called"<<std::endl;
+    }
 
-    // Assignment operator overloading
     Fixed &operator=(const Fixed &other) {
+        std::cout<<"Copy assignment operator called"<<std::endl;
         if (this != &other) {
             value = other.value;
         }
         return *this;
     }
 
-    // Destructor
-    ~Fixed() {}
+    ~Fixed() {
+        std::cout<<"destructor called"<<std::endl;
+    }
 
-    // Getter for raw bits
     int getRawBits() const {
+        std::cout<<"getRawBits member function called"<<std::endl;
         return value;
     }
 
-    // Setter for raw bits
     void setRawBits(int const raw) {
         value = raw;
     }
 };
 
 int main() {
-    // Example usage
     Fixed a;
     Fixed b( a );
     Fixed c;
