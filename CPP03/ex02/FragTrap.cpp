@@ -38,5 +38,5 @@ FragTrap::~FragTrap()
 
 void FragTrap::highFiveGuys()
 {
-    std::cout<<name<<" Is aking everyone for a High Five !"<<std::endl;
+    std::cout<<name<<" is asking everyone for a High Five !"<<std::endl;
 }
