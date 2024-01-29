@@ -1,5 +1,5 @@
 #pragma once
-#include "Animals.hpp"
+#include "AAnimal.hpp"
 
 class Cat : public AAnimal{
     private:
@@ -11,8 +11,9 @@ class Cat : public AAnimal{
         Cat(const Cat &other);
         Cat &operator=(const Cat& other);
 
-    void makeSound() const;
-
+        Brain *getBrain(void)const;
+        void makeSound() const;
+        void compareTo(Cat const & other_cat) const;
 };
 
 

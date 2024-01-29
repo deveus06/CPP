@@ -1,39 +1,39 @@
 #include "Animals.hpp"
 
-Animals::Animals(){
+AAnimal::AAnimal(){
     this->type = "Animal";
     std::cout << "Default Animals created!" <<std::endl;
 }
 
-Animals::~Animals()
+AAnimal::~AAnimal()
 {
     std::cout << "Animals destructor called" << std::endl;
     return;
 }
 
-Animals::Animals(const Animals &target)
+AAnimal::AAnimal(const AAnimal &target)
 {
     *this = target;
     std::cout<<"Animals copy constructor called"<<std::endl;
     return;
 }
 
-Animals& Animals::operator=(const Animals &other)
+AAnimal& AAnimal::operator=(const AAnimal &other)
 {
     this->type = other.type;
     return *this;
 }
-const std::string &Animals::getType() const
+const std::string &AAnimal::getType() const
 {
     return this->type;
 }
 
-void Animals::setType(std::string type)
+void AAnimal::setType(std::string type)
 {
     this->type = type;
 }
 
-void Animals::makeSound() const
+void AAnimal::makeSound() const
 {
     std::cout << "This animal is making noise, impossible to define it"<<std::endl;
 }

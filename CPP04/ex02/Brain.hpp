@@ -10,4 +10,5 @@ class Brain{
     ~Brain();
     Brain(const Brain &src);
     Brain &operator=(const Brain &rhs);
+    std::string *getIdeas();
 };

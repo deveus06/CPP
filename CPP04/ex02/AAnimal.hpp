@@ -1,13 +1,13 @@
 #pragma once
 #include <iostream>
-
+#include "Brain.hpp"
 class AAnimal{
     protected :
     std::string type;
 
     public :
     AAnimal();
-    virtual ~AAnimal();
+    virtual ~AAnimal() = 0;
 
     AAnimal(const AAnimal &other);
     AAnimal &operator=(const AAnimal &other);

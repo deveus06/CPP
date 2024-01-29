@@ -14,6 +14,11 @@ void customReplace(std::string& source, const std::string& search, const std::st
 
 void replaceInFile(const std::string& filename, const std::string& s1, const std::string& s2) {
     std::ifstream inputFile(filename);
+    if(s1.empty())
+    {
+        std::cout <<"Error: cannot search for nothing dummy."<< std::endl;
+        return;
+    }
     if (!inputFile.is_open()) {
         std::cerr << "Error: Unable to open file " << filename << std::endl;
         return;

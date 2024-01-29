@@ -1,16 +1,16 @@
 #pragma once
 #include <iostream>
-
-class Animals{
+#include "Brain.hpp"
+class AAnimal{
     protected :
     std::string type;
 
     public :
-    Animals();
-    virtual ~Animals();
+    AAnimal();
+    virtual ~AAnimal();
 
-    Animals(const Animals &other);
-    Animals &operator=(const Animals &other);
+    AAnimal(const AAnimal &other);
+    AAnimal &operator=(const AAnimal &other);
 
     const std::string &getType() const ;
     void setType(std::string type);

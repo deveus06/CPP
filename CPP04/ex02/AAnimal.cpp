@@ -1,20 +1,20 @@
-#include "Animals.hpp"
+#include "AAnimal.hpp"
 
 AAnimal::AAnimal(){
     this->type = "Animal";
-    std::cout << "Default Animals created!" <<std::endl;
+    std::cout << "Default Animal created!" <<std::endl;
 }
 
 AAnimal::~AAnimal()
 {
-    std::cout << "Animals destructor called" << std::endl;
+    std::cout << "Animal destructor called" << std::endl;
     return;
 }
 
 AAnimal::AAnimal(const AAnimal &target)
 {
     *this = target;
-    std::cout<<"Animals copy constructor called"<<std::endl;
+    std::cout<<"Animal copy constructor called"<<std::endl;
     return;
 }
 
