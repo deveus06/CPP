@@ -1,4 +1,4 @@
-#include "Animals.hpp"
+#include "Animal.hpp"
 #include "WrongAnimal.hpp"
 #include "Cat.hpp"
 #include "WrongCat.hpp"
@@ -7,9 +7,9 @@
 
 int main()
 {
-    const AAnimal* meta = new AAnimal();
-    const AAnimal* dog = new Dog();
-    const AAnimal* cat = new Cat();
+    const Animal* meta = new Animal();
+    const Animal* dog = new Dog();
+    const Animal* cat = new Cat();
     const WrongAnimal* Wrongcat = new WrongCat();
     
 

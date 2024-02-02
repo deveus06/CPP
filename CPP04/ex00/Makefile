@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -pedantic
 BUILD_DIR = build
-SRC_FILES = main.cpp Dog.cpp Cat.cpp Animals.cpp WrongCat.cpp WrongAnimal.cpp
+SRC_FILES = main.cpp Dog.cpp Cat.cpp Animal.cpp WrongCat.cpp WrongAnimal.cpp
 OBJ_FILES = $(SRC_FILES:%.cpp=$(BUILD_DIR)/%.o)
 DEP_FILES = $(OBJ_FILES:.o=.d)
 TARGET = Polymorph

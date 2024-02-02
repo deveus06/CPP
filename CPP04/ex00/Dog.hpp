@@ -1,6 +1,6 @@
 #pragma once
 
-class Dog : public AAnimal{
+class Dog : public Animal{
     private:
     public:
     Dog();

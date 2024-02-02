@@ -1,4 +1,4 @@
-#include "Animals.hpp"
+#include "Animal.hpp"
 #include "WrongAnimal.hpp"
 #include "Cat.hpp"
 #include "WrongCat.hpp"
@@ -7,21 +7,37 @@
 
 int main()
 {
-    const AAnimal* j = new Dog();
-    const AAnimal* i = new Cat();
+	const Animal* zoo[4];
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
 
-    delete j;
-    delete i;
+	std::cout << std::endl << "Getting types from animal pointer(s)" << std::endl;
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
 
-    Dog basic;
-    {
-        Dog tmp = basic;
-    }
+	std::cout << std::endl << "Getting Sounds from animal pointer(s)" << std::endl;
+	i->makeSound(); //will output the cat sound!
+	j->makeSound();
+	meta->makeSound();
 
-    const AAnimal* animals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
-    for ( int i = 0; i < 4; i++ ) {
-        delete animals[i];
-    }
+	std::cout << std::endl << "Deleting Animal pointer(s)" << std::endl;
+	delete j;
+	delete i;
+	delete meta;
 
+	std::cout << std::endl << "-*  Creating Zoo  *-" << std::endl;
+	zoo[0] = new Dog();
+	zoo[1] = new Cat();
+	zoo[2] = new Dog();
+	zoo[3] = new Cat();
+
+	std::cout << std::endl << "Getting Infos from animal pointer array. And Deletes" << std::endl;
+	for (int f = 0; f < 4; f++)
+	{
+		std::cout << "------------" << std::endl;
+		std::cout << "Type: " << zoo[f]->getType() << " Sound: "; zoo[f]->makeSound();
+		delete zoo[f];
+	}
     return 0;
 }

@@ -1,10 +1,10 @@
 CXX = g++
 CXXFLAGS = -std=c++98 -Wall -Wextra -Werror -pedantic
 BUILD_DIR = build
-SRC_FILES = main.cpp Dog.cpp Cat.cpp Animal.cpp WrongCat.cpp WrongAnimal.cpp Brain.cpp
+SRC_FILES = main.cpp Bureaucrat.cpp
 OBJ_FILES = $(SRC_FILES:%.cpp=$(BUILD_DIR)/%.o)
 DEP_FILES = $(OBJ_FILES:.o=.d)
-TARGET = burn_the_world
+TARGET = Bureaucrat
 
 all: $(TARGET)
 
